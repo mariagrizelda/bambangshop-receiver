@@ -61,29 +61,46 @@ You can install Postman via this website: https://www.postman.com/downloads/
 ## Mandatory Checklists (Subscriber)
 -   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create SubscriberRequest model struct.`
-    -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create SubscriberRequest model struct.`
+    -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Notification repository.`
+    -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
 
 ### Mandatory (Subscriber) Reflections
 
-#### Reflection Subscriber-1
+####Reflection Subscriber-1
 
-#### Reflection Subscriber-2
+1. Why is RwLock preferred over Mutex for a Vec of Notifications? — RwLock is favored because it allows multiple threads to read notifications concurrently while ensuring exclusive access during writes. 
+This setup is optimal for scenarios with frequent reads and fewer writes. While Mutex could also serve, it might not handle high-read scenarios as efficiently since it locks out all other accesses, 
+including reads, during writes.
+
+2. Why does Rust restrict mutating static variables via static functions? — Rust prioritizes thread safety, and permitting mutable static variables could lead to data races, a significant concern. 
+Mutable statics also conflict with Rust's strict ownership and borrowing principles, as they are globally accessible and modifiable from any part of the program. Moreover, static variables are designed 
+to be initialized once in a predictable manner, crucial for concurrent environments.
+
+####Reflection Subscriber-2
+
+1. Exploring beyond the tutorial: I delved into src/lib.rs beyond the tutorial's scope. Essentially, the code prepares our application to communicate with the web using an HTTP client. It handles 
+loading settings from default sources and environment variables. Additionally, it manages errors effectively, providing understandable feedback to users.
+
+2. How does the observer pattern facilitate adding more subscribers? — Without the observer pattern, handling duplicates would be cumbersome. This pattern allows us to easily create copies of the 
+receiving application, simplifying the process of adding more subscribers.
+
+3. About self-made tests: Indeed, they are beneficial. Generating fake test data proves useful when avoiding hard-coding dummy data. It enables assessing the implementation's correctness and ensures 
+that the use case aligns with expectations.
