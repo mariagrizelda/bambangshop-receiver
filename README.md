@@ -84,7 +84,7 @@ This is the place for you to write reflections:
 
 ### Mandatory (Subscriber) Reflections
 
-####Reflection Subscriber-1
+#### Reflection Subscriber-1
 
 1. Why is RwLock preferred over Mutex for a Vec of Notifications? — RwLock is favored because it allows multiple threads to read notifications concurrently while ensuring exclusive access during writes. 
 This setup is optimal for scenarios with frequent reads and fewer writes. While Mutex could also serve, it might not handle high-read scenarios as efficiently since it locks out all other accesses, 
@@ -94,7 +94,7 @@ including reads, during writes.
 Mutable statics also conflict with Rust's strict ownership and borrowing principles, as they are globally accessible and modifiable from any part of the program. Moreover, static variables are designed 
 to be initialized once in a predictable manner, crucial for concurrent environments.
 
-####Reflection Subscriber-2
+#### Reflection Subscriber-2
 
 1. Exploring beyond the tutorial: I delved into src/lib.rs beyond the tutorial's scope. Essentially, the code prepares our application to communicate with the web using an HTTP client. It handles 
 loading settings from default sources and environment variables. Additionally, it manages errors effectively, providing understandable feedback to users.
